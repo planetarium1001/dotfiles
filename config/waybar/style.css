@@ -1,0 +1,201 @@
+/* ======================= */
+/* === Global Settings === */
+/* ======================= */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "LXGW WenKai Mono Screen", "JetBrainsMono Nerd Font";
+    font-size: 18px;
+    font-weight: bold;
+    min-height: 0;
+}
+window#waybar {
+    background: transparent;
+    color: white;
+}
+
+/* ============== */
+/* === Window === */
+/* ============== */
+#window {
+    background-color: #c0caf5;
+    color: #24283b;
+    /* top right bottom left */
+    padding: 0px 5px 0px 5px;
+    /* top left bottom right */
+    margin: 0px 10px 0px 10px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 20px 20px 20px 20px;
+}
+window.#waybar.empty #window {
+    background-color: transparent;
+}
+
+/* ================== */
+/* === Workspaces === */
+/* ================== */
+#workspaces {
+    background-color: #24283b;
+    /* top left bottom right */
+    margin: 0px 10px 0px 10px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 20px 20px 20px 20px;
+}
+#workspaces button.active {
+    background-color: #c0caf5;
+    color: #24283b;
+    /* top left bottom right */
+    margin: 0px 0px 0px 0px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 20px 20px 20px 20px;
+}
+#workspaces button.urgent {
+    background-color: #f7768e;
+    color: #24283b;
+    /* top left bottom right */
+    margin: 0px 0px 0px 0px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 20px 20px 20px 20px;
+}
+#workspaces button:hover {
+    background-color: #7dcfff;
+    color: #24283b;
+    /* top left bottom right */
+    margin: 0px 0px 0px 0px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 20px 20px 20px 20px;
+}
+
+/* ============= */
+/* === Clock === */
+/* ============= */
+#clock {
+    background-color: #24283b;
+    padding: 0px 5px 0px 5px;
+    border-radius: 20px 20px 20px 20px;
+}
+#clock { color: #b48ead; }
+
+/* =========== */
+/* === CPU === */
+/* =========== */
+#cpu {
+    background-color: #24283b;
+    /* top right bottom left */
+    padding: 0px 5px 0px 3px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 20px 0px 0px 20px;
+}
+#cpu.normal_0, #cpu.normal { color:#7aa2f7; }
+#cpu.warning { color: #e0af68; }
+#cpu.critical { color: #f7768e; }
+
+/* ============== */
+/* === Memory === */
+/* ============== */
+#memory {
+    background-color: #24283b;
+    /* top right bottom left */
+    padding: 0px 3px 0px 3px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 0px 0px 0px 0px;
+}
+#memory.normal_0, #memory.normal { color:#7aa2f7; }
+#memory.warning { color: #e0af68; }
+#memory.critical { color: #f7768e; }
+
+/* ============ */
+/* === Disk === */
+/* ============ */
+#disk {
+    background-color: #24283b;
+    /* top right bottom left */
+    padding: 0px 3px 0px 5px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 0px 20px 20px 0px;
+}
+#disk.normal_0, #disk.normal { color:#7aa2f7; }
+#disk.warning { color: #e0af68; }
+#disk.critical { color: #f7768e; }
+
+/* =============== */
+/* === Network === */
+/* =============== */
+#network {
+    background-color: #24283b;
+    /* top right bottom left */
+    padding: 0px 5px 0px 8px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 20px 0px 0px 20px;
+}
+#network.wifi { color: #7aa2f7; }
+#network.ethernet { color: #7aa2f7; }
+#network.linked { color: #7aa2f7; }
+#network.disconnected { color: #f7768e; }
+
+/* ================= */
+/* === Bluetooth === */
+/* ================= */
+#bluetooth {
+    background-color: #24283b;
+    /* top right bottom left */
+    padding: 0px 8px 0px 8px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 0px 0px 0px 0px;
+}
+#bluetooth { color: #7aa2f7; }
+#bluetooth.connected { color: #7aa2f7; }
+#bluetooth.disconnected { color: #e0af68; }
+#bluetooth.disabled { color: #f7768e; }
+
+/* ================= */
+/* === Backlight === */
+/* ================= */
+#backlight {
+    background-color: #24283b;
+    /* top right bottom left */
+    padding: 0px 0px 0px 0px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 0px 0px 0px 0px;
+}
+#backlight.normal { color:#7aa2f7; }
+#backlight.low { color: #e0af68; }
+#backlight.critical { color: #f7768e; }
+
+/* ================== */
+/* === Pulseaudio === */
+/* ================== */
+#pulseaudio {
+    background-color: #24283b;
+    /* top right bottom left */
+    padding: 0px 0px 0px 8px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 0px 0px 0px 0px;
+}
+#pulseaudio.normal_0, #pulseaudio.normal { color:#7aa2f7; }
+#pulseaudio.muted { color: #e0af68; }
+
+/* =============== */
+/* === Battery === */
+/* =============== */
+#battery {
+    background-color: #24283b;
+    /* top right bottom left */
+    padding: 0px 5px 0px 8px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 0px 20px 20px 0px;
+}
+#battery { color: #7aa2f7; }
+#battery.charging { color: #9ece6a; }
+#battery.warning:not(.charging) { color: #f7768e; }
+
+/* ============ */
+/* === Tray === */
+/* ============ */
+#tray {
+    background-color: #24283b;
+    /* top right bottom left */
+    padding: 0px 5px 0px 5px;
+    /* left-top right-top right-bottom left-bottom*/
+    border-radius: 20px 20px 20px 20px;
+}

@@ -1,0 +1,15 @@
+config/fcitx5/
+config/fish/
+config/fontconfig/
+config/gtk-3.0/
+config/hypr/
+config/kitty/
+config/mako/
+config/nvim/init.lua
+config/nvim/lua/
+config/nwg-look/
+config/qt5ct/
+config/waybar/
+config/wofi/
+config/yazi/
+scripts/
