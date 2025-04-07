@@ -3,5 +3,5 @@ chmod +x ./user/*
 chmod +x ./settings.sh
 ./settings.sh
 
-./user/home.sh
-./user/dotfiles.sh
+cat ./settings.sh > tmp.sh && cat ./user/home.sh >> tmp.sh && chmod +x tmp.sh && ./tmp.sh
+cat ./settings.sh > tmp.sh && cat ./user/dotfiles.sh >> tmp.sh && chmod +x tmp.sh && ./tmp.sh
