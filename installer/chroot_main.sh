@@ -1,6 +1,8 @@
 #!/usr/bin/bash
 cd /home/installer
 chmod +x ./chroot/*
+chmod +x ./settings.sh
+./settings.sh
 
 ./chroot/hosts.sh
 ./chroot/locale.sh
