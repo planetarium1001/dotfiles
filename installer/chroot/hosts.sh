@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 echo -e "\e[31m==> Config hosts \e[0m"
 echo "$HOSTNAME" > /etc/hostname
 echo "127.0.0.1   localhost\n" > /etc/hosts

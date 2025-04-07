@@ -1,8 +1,16 @@
 #!/usr/bin/bash
 echo -e "\e[31m ==>Partition the disks\e[0m"
-echo "label: gpt" | sfdisk /dev/nvme0n1
-echo ",512M,ef,*" | sfdisk /dev/nvme0n1
-echo ",,83" | sfdisk --append /dev/nvme0n1
+echo "g
+n
+
+
++512M
+n
+
+
+
+w
+" | fdisk /dev/nvme0n1
 
 echo -e "\e[31m ==> Format the partitions \e[0m"
 mkfs.fat -F32 /dev/nvme0n1p1

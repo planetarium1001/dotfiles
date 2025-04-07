@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 echo -e "\e[31m ==>Config user home \e[0m"
 mkdir -p ~/Desktop
 mkdir -p ~/Documents
