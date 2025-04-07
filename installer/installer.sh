@@ -1,11 +1,12 @@
-echo -e "\e[31m ==> Stop and disable reflector service \e[0m"
-systemctl disable reflector.service
-systemctl stop reflector.service
-
-
-
-echo -e "\e[31m ==> Partition the disks \e[0m"
-echo "label: gpt" | sfdisk /dev/nvme0n1
-echo ",512M,ef,*" | sfdisk /dev/nvme0n1
-echo ",,83" | sfdisk --append /dev/nvme0n1
-echo -e "\e[31m ==> Format the partitions \e[0m"
+cat ./settings.sh > tmp_0.sh
+cat ./settings.sh > tmp_1.sh
+cat ./settings.sh > tmp_2.sh
+cat ./settings.sh > tmp_3.sh
+cat ./system_installer.sh >> tmp_0.sh
+cat ./user_install.sh >> tmp_1.sh
+echo ""
+cat ./su_installer.sh >> tmp_2.sh
+echo "mv ./tmp_1.sh /mnt/home/tmp_1.sh" >> tmp_0.sh
+echo "mv ./tmp_2.sh /mnt/home/tmp_2.sh" >> tmp_0.sh
+echo "mv ./tmp_3.sh /mnt/home/tmp_3.sh" >> tmp_0.sh
+echo "arch-chroot /mnt /mnt/home/tmp_1.sh" >> tmp_0.sh
