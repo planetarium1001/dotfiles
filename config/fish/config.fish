@@ -10,3 +10,7 @@ function yazi
     end
     rm -f -- "$tmp"
 end
+
+function dotfiles
+    cd ~/Projects/dotfiles/
+end

@@ -3,7 +3,7 @@ import os
 import sys
 with open("./paths", 'r') as paths_read:
     paths = paths_read.read().split("\n")
-selection = input("Push OR Pull: ")
+selection = input("Update and Reload [YES] OR [NO]: ")
 print("------------------------------------------")
 
 def copy_files(options):
@@ -16,20 +16,13 @@ def copy_files(options):
         else:
             print("File: ", path)
             os.system("cp -f " + options[0] + path + ' ' + options[1] + path)
-    print("------------------------------------------")
 
-if selection == "Push" or selection == "push":
-    options = ['~/.', './']
-    copy_files(options)
-    os.system("git init && git add . && git commit -m 'Update' && git push")
-    print("------------------------------------------")
-    print("Push: Done.")
-elif selection == "Pull" or selection == 'pull':
+if "y" in selection or "Y" in selection:
     options = ['./', '~/.']
-    os.system("git pull")
     copy_files(options)
+    os.system("./scripts/reload.sh")
     print("------------------------------------------")
     print("Pull: Done.")
 else:
-    print("Invalid Input")
+    print("Exit")
     sys.exit()
