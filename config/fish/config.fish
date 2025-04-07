@@ -1,3 +1,5 @@
+set DOTFILES ~/Projects/dotfiles/
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -12,5 +14,24 @@ function yazi
 end
 
 function dotfiles
-    cd ~/Projects/dotfiles/
+    if ! test -z $argv[1]
+        if test $argv[1] = "c"; or test $argv[1] = "config"
+            cd $DOTFILES/config
+        else if test $argv[1] = "d"; or test $argv[1] = "docs"
+            cd $DOTFILES/docs
+        else if test $argv[1] = "s"; or test $argv[1] = "scripts"
+            cd $DOTFILES/scripts
+        else if test $argv[1] = ".c"; or test $argv[1] = ".config"
+            cd $HOME/.config
+        else if test $argv[1] = ".s"; or test $argv[1] = ".scripts"
+            cd $HOME/.scripts
+        end
+    else
+        cd $DOTFILES
+    end
+    if ! test -n $argv[2]
+        cd $argv[2]
+    end
 end
+
+abbr -a d dotfiles

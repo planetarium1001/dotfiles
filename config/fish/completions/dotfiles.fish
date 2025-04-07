@@ -1,0 +1,8 @@
+complete -c dotfiles -f -n "! __fish_seen_subcommand_from c config d docs s scripts" -a "c config" -d "dotfiles/config/"
+complete -c dotfiles -f -n "! __fish_seen_subcommand_from c config d docs s scripts" -a "d docs" -d "dotfiles/docs/"
+complete -c dotfiles -f -n "! __fish_seen_subcommand_from c config d docs s scripts" -a "s scripts" -d "dotfiles/scripts/"
+complete -c dotfiles -f -n "! __fish_seen_subcommand_from c config d docs s scripts" -a ".c .config" -d ".config/"
+complete -c dotfiles -f -n "! __fish_seen_subcommand_from c config d docs s scripts" -a ".s .scripts" -d ".scripts/"
+complete -c dotfiles -f -n "__fish_seen_subcommand_from c config .c .config" -a "(ls $DOTFILES/config/)" -d "in dotfiles/config/"
+complete -c dotfiles -f -n "__fish_seen_subcommand_from d docs" -a "(ls $DOTFILES/docs/)" -d "in dotfiles/docs/"
+complete -c dotfiles -f -n "__fish_seen_subcommand_from s scripts .s .scripts" -a "(ls $DOTFILES/scripts/)" -d "in dotfiles/scripts/"
