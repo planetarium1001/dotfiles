@@ -28,6 +28,7 @@ elif selection == "Pull" or selection == 'pull':
     options = ['./', '~/.']
     os.system("git pull")
     copy_files(options)
+    os.system("./customize")
     print("------------------------------------------")
     print("Pull: Done.")
 else:

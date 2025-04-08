@@ -1,0 +1,16 @@
+#!/usr/bin/python
+
+# Nvidia Settings
+import os
+os.system("lspci | grep -E 'VGA|3D' > /tmp/pull_customize")
+with open("/tmp/pull_customize", "r") as r_c:
+    video_card = r_c.read()
+
+if "NVIDIA" in video_card:
+    sys.exit()
+else:
+    with open("./config/hypr/config/environment.conf", "rw") as rw_e:
+        config = rw_e.read()
+        config = config.replace(r"# === Set Video Card === #", "")
+        config = config.replace(r"env = AQ_DRM_DEVICES,/dev/dri/card2", "")
+        rw_e.write(config)
