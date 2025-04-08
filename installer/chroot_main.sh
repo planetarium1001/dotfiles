@@ -12,4 +12,4 @@ cat ./settings.sh > tmp.sh && cat ./chroot/pacman.sh >> tmp.sh && chmod +x tmp.s
 cat ./settings.sh > tmp.sh && cat ./chroot/packages.sh >> tmp.sh && chmod +x tmp.sh && ./tmp.sh
 
 cat ./settings.sh > tmp.sh && echo "cp -r /home/installer /home/$USERNAME/Downloads/Programs/installer" >> tmp.sh && chmod +x tmp.sh && ./tmp.sh
-cat ./settings.sh > tmp.sh && echo "su $USERNAME -c 'bash /home/$USERNAME/Downloads/Programs/installer/user_main.sh'" >> tmp.sh && chmod +x tmp.sh && ./tmp.sh
+cat ./settings.sh > tmp.sh && echo "su $USERNAME -c /usr/bin/bash /home/$USERNAME/Downloads/Programs/installer/user_main.sh" >> tmp.sh && chmod +x tmp.sh && ./tmp.sh
