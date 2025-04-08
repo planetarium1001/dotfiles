@@ -9,8 +9,9 @@ with open("/tmp/pull_customize", "r") as r_c:
 if "NVIDIA" in video_card:
     sys.exit()
 else:
-    with open("./config/hypr/config/environment.conf", "rw") as rw_e:
-        config = rw_e.read()
+    with open("./config/hypr/config/environment.conf", "r") as r_e:
+        config = r_e.read()
         config = config.replace(r"# === Set Video Card === #", "")
         config = config.replace(r"env = AQ_DRM_DEVICES,/dev/dri/card2", "")
-        rw_e.write(config)
+    with open("./config/hypr/config/environment.conf", "w") as w_e:
+        w_e.write(config)
