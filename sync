@@ -39,7 +39,6 @@ def copy_files(options):
                 os.mkdir(options[1] + path)
             os.system("cp -rf " + options[0] + path + '* ' + options[1] + path)
         else:
-            print("[~] File: ", path)
             print(options[1] + path.replace(path.split("/")[-1], ""))
             if not os.path.exists(options[1] + path.replace(path.split("/")[-1], "")):
                 os.mkdir(options[1] + path.replace(path.split("/")[-1], ""))
@@ -53,7 +52,7 @@ def remove_custom():
         print("Custom File: ", file)
         os.system("rm ./" + file)
 
-selection = input("Push OR Pull: ")
+selection = sys.argv[1]
 print("------------------------------------------")
 
 if selection == "Push" or selection == "push":
