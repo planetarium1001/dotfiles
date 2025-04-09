@@ -63,14 +63,16 @@ if selection == "Push" or selection == "push":
     remove_custom()
     os.system("git init && git add . && git commit -m 'Update' && git push")
     print("----------------------------------------------------------")
-    print("Push: Done.")
+    print("Push: ")
+    os.system("git diff --cached")
 elif selection == "Pull" or selection == 'pull':
     options = ['./', '~/.']
     os.system("git pull")
     remove_custom()
     copy_files(options)
     print("----------------------------------------------------------")
-    print("Pull: Done.")
+    print("Pull: ")
+    os.system("git diff --cached")
 else:
     print("Invalid Input")
     sys.exit()
