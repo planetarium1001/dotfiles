@@ -39,7 +39,7 @@ def copy_files(options):
                 os.mkdir(options[1] + path)
             os.system("cp -rf " + options[0] + path + '* ' + options[1] + path)
         else:
-            print(options[1] + path.replace(path.split("/")[-1], ""))
+            print("[~] File: ", path)
             if not os.path.exists(options[1] + path.replace(path.split("/")[-1], "")):
                 os.mkdir(options[1] + path.replace(path.split("/")[-1], ""))
             os.system("cp -f " + options[0] + path + ' ' + options[1] + path)
