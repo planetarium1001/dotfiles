@@ -14,3 +14,5 @@ config/wofi/
 config/yazi/
 config/xsettingsd/xsettingsd.conf
 scripts/
+/etc/sddm.conf
+/usr/share/sddm/themes/tokyo-night-sddm/theme.conf
