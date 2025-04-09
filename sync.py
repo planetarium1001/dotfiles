@@ -1,5 +1,6 @@
 import os
 import sys
+import getpass
 
 with open("./paths") as p_o:
     paths = p_o.read() # Get paths
@@ -21,6 +22,7 @@ def copy_files(home, root, option):
             if not os.path.exists("./" + path):
                 os.makedirs("./" + path)
             cmd = "cp " + part[1][0] + " ~/." + part[0] + part[1][1] + " ./" + part[0]
+            print("[cp]", part[0])
             os.system(cmd)
         for part in root:
             if part[1][0] == "-rf": # Folder
@@ -30,6 +32,7 @@ def copy_files(home, root, option):
             if not os.path.exists("./root" + path):
                 os.makedirs("./root" + path)
             cmd = "cp " + part[1][0] + " " + part[0] + part[1][1] + " ./root" + part[0]
+            print("[cp]", part[0])
             os.system(cmd)
     elif option == 1: # Pull
         for part in home:
@@ -40,6 +43,7 @@ def copy_files(home, root, option):
             if not os.path.exists("~/." + path):
                 os.makedirs("~/." + path)
             cmd = "cp " + part[1][0] + " ./" + part[0]+ part[1][1] + " ~/." + part[0] 
+            print("[cp]", part[0])
             os.system(cmd)
         cmd = ""
         for part in root:
@@ -51,16 +55,23 @@ def copy_files(home, root, option):
                 path = part[0]
             elif part[1][0] == "-f": # File
                 path = part[0].replace(part[0].split("/")[-1], "")
-            if not os.path.exists("." + path):
-                cmd += "sudo mkdir -p " + path + " && "
+            os.system("echo 'empty' > /tmp/diff")
+            if not os.path.exists(path):
+                cmd += "mkdir -p " + path + "\n"
                 diff_cmd = "echo 'not exists' > /tmp/diff"
             with open("/tmp/diff", "r") as d_r:
                 diff = d_r.read()
-            if diff != "":
-                cmd += "sudo cp " + part[1][0] + " ./root" + part[0]+ part[1][1] + " " + part[0] + " && "
+            if diff != "empty\n":
+                cmd += "cp " + part[1][0] + " ./root" + part[0]+ part[1][1] + " " + part[0] + "\n"
+                print("[cp]", part[0])
         if cmd != "":
-            print("Need sudo: ")
+            passwd = getpass.getpass("[sudo] Password: ")
+            os.system("echo '" + cmd + "' > /tmp/root_copy")
+            cmd = "echo -e '" + passwd + "' | sudo -kS bash /tmp/root_copy"
             os.system(cmd)
+            print("\n[sudo] Password has been filled in.")
+            os.system("rm -f /tmp/root_copy")
+        os.system("rm -f /tmp/diff")
 
 def remove_custom():
     for path in custom:
@@ -108,6 +119,7 @@ if option == "push" or option == "Push":
     option = 0
     print("-" * 30 + " Files List " + "-" * 30)
     home, root = parts_list()
+    print("-" * 30 + " Sync Files " + "-" * 30)
     copy_files(home, root, option)
     print("-" * 29 + " Custom Files " + "-" * 29)
     remove_custom()
@@ -122,6 +134,7 @@ elif option == "pull" or option == "Pull":
     home, root = parts_list()
     print("-" * 29 + " Custom Files " + "-" * 29)
     remove_custom()
+    print("-" * 30 + " Sync Files " + "-" * 30)
     copy_files(home, root, option)
     print("-" * 33 + " Done " + "-" * 33)
 else:
