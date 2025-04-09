@@ -20,8 +20,6 @@ def copy_files(home, root, option):
                 path = part[0].replace(part[0].split("/")[-1], "")
             if not os.path.exists("./" + path):
                 os.makedirs("./" + path)
-            # cp config/fcitx5/~/.config/fcitx5/['-rf', '*'] ./config/fcitx5/
-            print("cp " + str(part[1][0]) + " ~/." + str(part[0]) + str(part[1][1]) + " ./" + str(part[0]))
             cmd = "cp " + part[1][0] + " ~/." + part[0] + part[1][1] + " ./" + part[0]
             os.system(cmd)
         for part in root:
@@ -64,6 +62,24 @@ def copy_files(home, root, option):
             print("Need sudo: ")
             os.system(cmd)
 
+def remove_custom():
+    for path in custom:
+        if path == "":
+            break
+        if path[-1] == "/": # Folder
+            cmd = "rm -rf "
+            output = "Custom Folder: " + path
+        else: # File
+            cmd = "rm -f "
+            output = "Custom File: " + path
+        if path[0] == "/": # In /
+            print("[/]", output)
+            path = "./root" + path
+        else:
+            print("[~]", output)
+            path = "./" + path
+        os.system(cmd + path)
+
 def parts_list():
     home = []
     root = []
@@ -90,10 +106,24 @@ option = sys.argv[1]
 
 if option == "push" or option == "Push":
     option = 0
+    print("-" * 30 + " Files List " + "-" * 30)
+    home, root = parts_list()
+    copy_files(home, root, option)
+    print("-" * 29 + " Custom Files " + "-" * 29)
+    remove_custom()
+    print("-" * 31 + " Git Push " + "-" * 31)
+    os.system("git init && git add . && git commit -m 'Update' && git push")
+    print("-" * 32 + " Done " + "-" * 32)
 elif option == "pull" or option == "Pull":
     option = 1
+    print("-" * 31 + " Git Pull " + "-" * 31)
+    os.system("git pull")
+    print("-" * 30 + " Files List " + "-" * 30)
+    home, root = parts_list()
+    print("-" * 29 + " Custom Files " + "-" * 29)
+    remove_custom()
+    copy_files(home, root, option)
+    print("-" * 32 + " Done " + "-" * 32)
 else:
     print("Invalid Option.")
     sys.exit()
-home, root = parts_list()
-copy_files(home, root, option)
