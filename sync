@@ -8,18 +8,36 @@ with open("./paths", 'r') as paths_read:
 with open("./custom", 'r') as custom_read:
     custom = custom_read.read().split("\n")
 
-selection = input("Push OR Pull: ")
-print("------------------------------------------")
+def root_files(options, file):
+    if options[0]  == "~/":
+        options = ["", options[1]]
+        if path[-1] == "/":
+            os.system("cp -rf " + options[0] + path + '* ' + options[1] + path)
+            print("[/] Folder: ", path)
+        else:
+            print("[/] File: ", path)
+            os.system("cp -f " + options[0] + path + ' ' + options[1] + path)
+    elif options[0] == "./":
+        options = [options[0], ""]
+        if path[-1] == "/":
+            os.system("sudo cp -rf " + options[0] + path + '* ' + options[1] + path)
+            print("[/] Folder: ", path)
+        else:
+            print("[/] File: ", path)
+            os.system("sudo cp -f " + options[0] + path + ' ' + options[1] + path)
 
 def copy_files(options):
     for path in paths:
         if path == "":
             break
+        if path[0] == "/":
+            root_files(options, path)
+            break
         if path[-1] == "/":
-            print("Flolder: ", path)
+            print("[~] Folder: ", path)
             os.system("cp -rf " + options[0] + path + '* ' + options[1] + path)
         else:
-            print("File: ", path)
+            print("[~] File: ", path)
             os.system("cp -f " + options[0] + path + ' ' + options[1] + path)
     print("------------------------------------------")
 
@@ -29,6 +47,9 @@ def remove_custom():
             break
         print("Custom File: ", file)
         os.system("rm ./" + file)
+
+selection = input("Push OR Pull: ")
+print("------------------------------------------")
 
 if selection == "Push" or selection == "push":
     options = ['~/.', './']
@@ -42,7 +63,6 @@ elif selection == "Pull" or selection == 'pull':
     os.system("git pull")
     remove_custom()
     copy_files(options)
-    os.system("./customize")
     print("------------------------------------------")
     print("Pull: Done.")
 else:
