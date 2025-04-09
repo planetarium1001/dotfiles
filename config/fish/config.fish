@@ -22,14 +22,14 @@ function dotfiles
         else if test $argv[1] = "s"; or test $argv[1] = "scripts"
             cd $DOTFILES/scripts
         else if test $argv[1] = ".c"; or test $argv[1] = ".config"
-            cd $HOME/.config
+            cd ~/.config
         else if test $argv[1] = ".s"; or test $argv[1] = ".scripts"
-            cd $HOME/.scripts
+            cd ~/.scripts
         end
     else
         cd $DOTFILES
     end
-    if ! test -n $argv[2]
+    if ! test -z $argv[2]
         cd $argv[2]
     end
 end
