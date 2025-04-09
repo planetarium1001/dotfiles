@@ -9,7 +9,7 @@ with open("./custom", 'r') as custom_read:
     custom = custom_read.read().split("\n")
 
 def root_files(options, file):
-    if options[0]  == "~/":
+    if options[0]  == "~/.": # Push
         options = ["", options[1]]
         if path[-1] == "/":
             os.system("cp -rf " + options[0] + path + '* ' + options[1] + path)
@@ -17,7 +17,7 @@ def root_files(options, file):
         else:
             print("[/] File: ", path)
             os.system("cp -f " + options[0] + path + ' ' + options[1] + path)
-    elif options[0] == "./":
+    elif options[0] == "./": # Pull need sudo
         options = [options[0], ""]
         if path[-1] == "/":
             os.system("sudo cp -rf " + options[0] + path + '* ' + options[1] + path)
@@ -30,10 +30,10 @@ def copy_files(options):
     for path in paths:
         if path == "":
             break
-        if path[0] == "/":
+        if path[0] == "/": # /
             root_files(options, path)
             break
-        if path[-1] == "/":
+        if path[-1] == "/": # Folder
             print("[~] Folder: ", path)
             if not os.path.exists(options[1] + path):
                 os.mkdir(options[1] + path)
@@ -43,7 +43,7 @@ def copy_files(options):
             if not os.path.exists(options[1] + path.replace(path.split("/")[-1], "")):
                 os.mkdir(options[1] + path.replace(path.split("/")[-1], ""))
             os.system("cp -f " + options[0] + path + ' ' + options[1] + path)
-    print("----------------------------------------------------------")
+    print("-" * 60)
 
 def remove_custom():
     for file in custom:
@@ -51,28 +51,27 @@ def remove_custom():
             break
         print("Custom File: ", file)
         os.system("rm ./" + file)
-    print("----------------------------------------------------------")
+    print("-" * 60)
 
 selection = sys.argv[1]
-
-print("----------------------------------------------------------")
+print("-" * 60)
 
 if selection == "Push" or selection == "push":
-    options = ['~/.', './']
+    options = ['~/.', './'] # Push
+
     copy_files(options)
     remove_custom()
     os.system("git init && git add . && git commit -m 'Update' && git push")
-    print("----------------------------------------------------------")
-    print("Push: ")
+    print("-" * 60)
+    print("Push: Done")
     os.system("git diff --cached")
 elif selection == "Pull" or selection == 'pull':
-    options = ['./', '~/.']
+    options = ['./', '~/.'] # Pull
     os.system("git pull")
     remove_custom()
     copy_files(options)
-    print("----------------------------------------------------------")
-    print("Pull: ")
-    os.system("git diff --cached")
+    print("-" * 60)
+    print("Pull: Done")
 else:
     print("Invalid Input")
     sys.exit()
