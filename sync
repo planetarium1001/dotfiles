@@ -58,15 +58,18 @@ print("-" * 60)
 
 if selection == "Push" or selection == "push":
     options = ['~/.', './'] # Push
-
     copy_files(options)
     remove_custom()
+    os.system("git diff origin/main --stat")
+    print("-" * 60)
     os.system("git init && git add . && git commit -m 'Update' && git push")
     print("-" * 60)
     print("Push: Done")
     os.system("git diff --cached")
 elif selection == "Pull" or selection == 'pull':
     options = ['./', '~/.'] # Pull
+    os.system("git diff origin/main --stat")
+    print("-" * 60)
     os.system("git pull")
     remove_custom()
     copy_files(options)
