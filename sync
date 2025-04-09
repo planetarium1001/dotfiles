@@ -43,7 +43,7 @@ def copy_files(options):
             if not os.path.exists(options[1] + path.replace(path.split("/")[-1], "")):
                 os.mkdir(options[1] + path.replace(path.split("/")[-1], ""))
             os.system("cp -f " + options[0] + path + ' ' + options[1] + path)
-    print("------------------------------------------")
+    print("----------------------------------------------------------")
 
 def remove_custom():
     for file in custom:
@@ -51,23 +51,25 @@ def remove_custom():
             break
         print("Custom File: ", file)
         os.system("rm ./" + file)
+    print("----------------------------------------------------------")
 
 selection = sys.argv[1]
-print("------------------------------------------")
+
+print("----------------------------------------------------------")
 
 if selection == "Push" or selection == "push":
     options = ['~/.', './']
     copy_files(options)
     remove_custom()
     os.system("git init && git add . && git commit -m 'Update' && git push")
-    print("------------------------------------------")
+    print("----------------------------------------------------------")
     print("Push: Done.")
 elif selection == "Pull" or selection == 'pull':
     options = ['./', '~/.']
     os.system("git pull")
     remove_custom()
     copy_files(options)
-    print("------------------------------------------")
+    print("----------------------------------------------------------")
     print("Pull: Done.")
 else:
     print("Invalid Input")
