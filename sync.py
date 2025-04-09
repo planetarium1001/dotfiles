@@ -113,7 +113,7 @@ if option == "push" or option == "Push":
     remove_custom()
     print("-" * 31 + " Git Push " + "-" * 31)
     os.system("git init && git add . && git commit -m 'Update' && git push")
-    print("-" * 32 + " Done " + "-" * 32)
+    print("-" * 33 + " Done " + "-" * 33)
 elif option == "pull" or option == "Pull":
     option = 1
     print("-" * 31 + " Git Pull " + "-" * 31)
@@ -123,7 +123,7 @@ elif option == "pull" or option == "Pull":
     print("-" * 29 + " Custom Files " + "-" * 29)
     remove_custom()
     copy_files(home, root, option)
-    print("-" * 32 + " Done " + "-" * 32)
+    print("-" * 33 + " Done " + "-" * 33)
 else:
     print("Invalid Option.")
     sys.exit()
