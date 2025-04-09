@@ -12,5 +12,5 @@ config/qt5ct/
 config/waybar/
 config/wofi/
 config/yazi/
-config/xsettingsd.conf
+config/xsettingsd/xsettingsd.conf
 scripts/
