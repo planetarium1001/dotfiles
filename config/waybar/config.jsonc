@@ -1,0 +1,209 @@
+{
+// =======================
+// === Global Settings ===
+// =======================
+    "position": "top",
+    "layer": "top",
+    "margin-top": 1,
+    "margin-bottom": 0,
+    "margin-left": 1,
+    "margin-right": 1,
+// --- Left Modules ---
+    "modules-left": ["clock", "cpu", "memory", "disk", "hyprland/workspaces"],
+// --- Center Modules ---
+    "modules-center": ["hyprland/window"],
+// --- Right Modules ---
+    "modules-right": ["tray", "network", "bluetooth", "backlight", "pulseaudio", "battery"],
+
+// ===========================
+// === Hyprland/Workspaces ===
+// ===========================
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+        "on-click": "activate",
+        "sort-by-number": true
+    },
+
+// ===========
+// === CPU ===
+// ===========
+    "cpu": {
+        "format": "󰻠 {usage}%",
+        "format-normal_0": "󰻠 0{usage}%",
+        "format-alt": "󰻠 {avg_frequency}Ghz",
+        "states": {
+            "normal_0": 0,
+            "normal": 10,
+            "warning": 90,
+            "critical": 95
+        },
+        "interval": 2
+    },
+
+// ==============
+// === Memory ===
+// ==============
+    "memory": {
+        "format": "󰍛 {}%",
+        "format_normal_0": "󰍛 0{}%",
+        "format-alt": "󰍛 {used}/{total}GiB",
+        "states": {
+            "normal_0": 0,
+            "normal": 10,
+            "warning": 80,
+            "critical": 90
+        },
+        "interval": 2
+    },
+
+// ============
+// === Disk ===
+// ============
+    "disk": {
+        "format": "󰋊 {percentage_used}%",
+        "format-normal_0": "󰋊 0{percentage_used}%",
+        "format-alt": "󰋊 {used}/{total} GiB",
+        "states": {
+            "normal_0": 0,
+            "normal": 10,
+            "warning": 95,
+            "critical": 98
+        },
+        "interval": 2,
+        "path": "/"
+    },
+
+// =======================
+// === Hyprland/Window ===
+// =======================
+    "hyprland/window": {
+        "format": "{}",
+        "icon": true,
+        "icon-size": 18
+    },
+
+// ===============
+// === Network ===
+// ===============
+    "network": {
+        "format-icons": [
+                "󰤟",
+                "󰤢",
+                "󰤥",
+                "󰤨"
+        ],
+        "format-wifi": "{icon}",
+        "format-ethernet": "",
+        "format-linked": "󰄡",
+        "format-disconnected": "󰤭",
+        "tooltip-format": "{essid} ({signalStrength}%) - {gwaddr}\n\nUp speed: {bandwidthUpBytes}\nDown speed: {bandwidthDownBytes}\nTotal speed: {bandwidthTotalBytes}",
+        "tooltip-format-ethernet": "{ifname} - {gwaddr}\n\nUp speed: {bandwidthUpBytes}\nDown speed: {bandwidthDownBytes}\nTotal speed: {bandwidthTotalBytes}",
+        "tooltip-format-disconnected": "Disconnected",
+        "interval": 2
+        },
+
+// =================
+// === Bluetooth ===
+// =================
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueman-manager",
+        "interval": 5,
+    },
+
+// =================
+// === Backlight ===
+// =================
+    "backlight": {
+        "device": "nvidia_wmi_ec_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "states": {
+            "normal": 50,
+            "low": 20,
+            "critical": 5
+        },
+        "on-scroll-up": "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-"
+    },
+
+// ==================
+// === Pulseaudio ===
+// ==================
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-normal_0": "{icon} 0{volume}%",
+        "format-muted": "󰝟 00%",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"],
+            "headphone": "󱡏",
+            "hands-free": "󱡏",
+            "headset": "󱡏"
+        },
+        "states": {
+            "muted": 0,
+            "normal_0": 9,
+            "normal": 100
+        },
+        "on-scroll-up": "pamixer -i 1",
+        "on-scroll-down": "pamixer -d 1",
+        "scroll-step": 5,
+        "on-click-right": "pavucontrol"
+    },
+
+// =============
+// === Clock ===
+// =============
+    "clock": {
+        "format": " {:%H:%M:%S}",
+        "format-alt": " {:%Y/%m/%d %H:%M:%S}",
+        "tooltip": "true",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 1
+    },
+
+// ===============
+// === Battery ===
+// ===============
+    "battery": {
+        "full-at": 95,
+        "states": {
+            "critical": 10,
+            "warning": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ],
+        "tooltip-format": "{capacity}%",
+        "interval": 60
+    },
+
+// ============
+// === Tray ===
+// ============
+    "tray": {
+        "icon-size": 18,
+        "spacing": 8
+    }
+}

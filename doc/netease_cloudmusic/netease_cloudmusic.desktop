@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Netease CloudMusic
+Exec=/home/planetarium/.scripts/netease_cloudmusic.sh
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/hicolor/scalable/apps/netease_cloudmusic.png
+StartupWMClass=cloudmusic.exe
+Categories=Audio;
+Comment=Netease CloudMusic

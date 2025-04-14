@@ -1,0 +1,74 @@
+# ============================ #
+# |--- Font Configuration ---| #
+# ============================ #
+font_family                             Source Code Pro
+#font_family LXGW WenKai Mono Screen
+#font_family family="LXGW Wenkai"
+font_size        14
+symbol_map U+e000-U+e00a,U+ea60-U+ebeb,U+e0a0-U+e0c8,U+e0ca,U+e0cc-U+e0d7,U+e200-U+e2a9,U+e300-U+e3e3,U+e5fa-U+e6b7,U+e700-U+e8ef,U+ed00-U+efc1,U+f000-U+f2ff,U+f000-U+f2e0,U+f300-U+f381,U+f400-U+f533,U+f0001-U+f1af0 JetBrainsMono Nerd Font
+symbol_map U+4E00-U+9FA5,U+9FA6-U+9FFF,U+3400-U+4DBF    LXGW WenKai Mono
+# 基本汉字 基本汉字补充 扩展A
+symbol_map U+3100-U+312F,U+31A0-U+31BF LXGW Wenkai Mono
+# 注音符号 注音符号（闽南语、客家语扩展）
+symbol_map U+3040-U+309F,U+30A0-U+30FF,U+31F0-U+31FF LXGW Wenkai Mono
+# 日文平假名 日文片假名 日文片假名拼音扩展
+symbol_map U+1100-U+11FF,U+AC00-U+D7AF,U+3130-U+318F LXGW Wenkai Mono
+# 韩文字母 韩文拼音 韩文兼容字母
+symbol_map U+0030–U+007A LXGW WenKai Mono GB Screen
+
+
+# ==================== #
+# |--- Appearance ---| #
+# ==================== #
+background_opacity                      0.9
+cursor_trail                            1
+cursor_trail_decay                      0.1 0.5
+cursor_trail_start_threshold            2
+# === Kitty Theme === #
+include current-theme.conf
+
+# ===================== #
+# |--- Keybindings ---| #
+# ===================== #
+# === Window === #
+map ctrl+h neighboring_window left
+map ctrl+j neighboring_window down
+map ctrl+k neighboring_window up
+map ctrl+l neighboring_window right
+map ctrl+shift+h move_window left
+map ctrl+shift+j move_window down
+map ctrl+shift+k move_window up
+map ctrl+shift+l move_window right
+map ctrl+u start_resizing_window
+map ctrl+enter new_window
+map ctrl+shift+enter launch --cwd=current
+map cmd+shift+enter new_os_window_with_cwd
+map ctrl+esc close_window
+# === Tab === #
+map ctrl+t new_tab
+map ctrl+shift+esc close_tab
+map ctrl+i next_tab
+map ctrl+o previous_tab
+map ctrl+shift+i move_tab_forward
+map ctrl+shift+o move_tab_backward
+map ctrl+shift+t set_tab_title
+map ctrl+p next_layout
+map ctrl+shift+p last_used_layout
+# === Font === #
+map ctrl+= change_font_size all +2.0
+map ctrl+- change_font_size all -2.0
+map ctrl+shift+= change_font_size all 0
+# === Clipboard === #
+map ctrl+shift+c copy_to_clipboard
+map ctrl+shift+v paste_from_clipboard
+# === Scrolling === #
+map ctrl+up scroll_line_up
+map ctrl+down scroll_line_down
+map ctrl+shift+up scroll_page_up
+map ctrl+shift+down scroll_page_down
+map ctrl+alt+j scroll_line_down
+map ctrl+alt+k scroll_line_up
+map ctrl+shift+alt+j scroll_page_down
+map ctrl+shift+alt+k scroll_page_up
+map ctrl+alt+enter scroll_end
+map ctrl+shift+alt+enter scroll_home
