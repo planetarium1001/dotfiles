@@ -464,5 +464,22 @@
         "target_uinput": "keyboard",
         "output_symbol": "KEY_ESC+KEY_SPACE+KEY_ENTER+KEY_A",
         "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 58,
+                "origin_hash": "a3bf8e2c1899f396d52967064891bc87"
+            },
+            {
+                "type": 1,
+                "code": 40,
+                "origin_hash": "a3bf8e2c1899f396d52967064891bc87"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_GRAVE",
+        "mapping_type": "key_macro"
     }
 ]
