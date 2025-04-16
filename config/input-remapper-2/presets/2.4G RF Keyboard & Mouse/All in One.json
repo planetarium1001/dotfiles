@@ -481,5 +481,27 @@
         "target_uinput": "keyboard",
         "output_symbol": "KEY_GRAVE",
         "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 125,
+                "origin_hash": "a3bf8e2c1899f396d52967064891bc87"
+            },
+            {
+                "type": 1,
+                "code": 29,
+                "origin_hash": "a3bf8e2c1899f396d52967064891bc87"
+            },
+            {
+                "type": 1,
+                "code": 57,
+                "origin_hash": "a3bf8e2c1899f396d52967064891bc87"
+            }
+        ],
+        "target_uinput": "mouse",
+        "output_symbol": "hold_keys(BTN_LEFT)",
+        "mapping_type": "key_macro"
     }
 ]
